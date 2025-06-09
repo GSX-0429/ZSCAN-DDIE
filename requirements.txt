@@ -1,0 +1,19 @@
+numpy==1.26.4
+addict
+yapf
+scikit-learn
+pandas
+torch_geometric==2.1.0
+rdkit==2024.3.5
+tensorflow
+deepchem
+networkx
+transformers==4.38.0
+matplotlib
+sacremoses
+bs4
+lxml
+torch == 1.11.0+cu113
+torch-cluster==1.6.0
+torch-scatter==2.0.9
+torch-sparse==0.6.13
