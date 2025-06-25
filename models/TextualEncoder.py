@@ -27,7 +27,7 @@ SIGNS = ['increase', 'decrease']
 
 
 @TEXTUAL.register_module()
-class BioTransEffectTextttention(nn.Module):
+class BioTextEncoder(nn.Module):
     def __init__(self, output_dim=None, input_dim=None, device=None):
         super().__init__()
         self.input_dim = input_dim

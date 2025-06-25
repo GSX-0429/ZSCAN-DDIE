@@ -73,7 +73,7 @@ class classifier(nn.Module):
         else:
             self.loss = nn.CrossEntropyLoss()
         return self.loss
-    # 计算两种嵌入的均匀性损失
+
     def UniformityLoss_twoemb(self, drugembeddings, proto_embedding, device):
         center_proto_embedding = torch.mean(proto_embedding, dim=1)
 
@@ -96,7 +96,7 @@ class classifier(nn.Module):
             return loss2
         elif self.class_uni_loss == True and self.instanse_uni_loss == True:
             return loss1 + loss2
-        # 计算单个嵌入的均匀性损失
+
     def single_UniformityLoss_twoemb(self, drugembeddings, proto_embedding, device):
         center_proto_embedding = torch.mean(proto_embedding, dim=0)
         normalize_proto_embedding = F.normalize(proto_embedding - center_proto_embedding.unsqueeze(0))
@@ -183,7 +183,7 @@ class classifier(nn.Module):
     # 计算局部损失
     def Local(self, struct_output, drugemb, semanticemb, emb_ids):
         if self.use_attention:
-            d_k = drugemb.size(-1)  # 获取药物嵌入的维度300
+            d_k = drugemb.size(-1)
             Q = torch.matmul(drugemb, self.W_q).expand((semanticemb.shape[0], drugemb.shape[0],
                                                         drugemb.shape[1], 256)).transpose(0,1)
 
@@ -232,8 +232,8 @@ class classifier(nn.Module):
         elif input[2][0] == "gzsl":
             textual_output_all, emb_ids, _ = self.Textualmodule(input[0], self.val_gzsl_textualinput)
 
-        # logits, loss_g, cross_att, proto = self.Local(struct_output, sub_structure, textual_output_all, emb_ids)  # 计算局部损失
-        logits, loss_g, cross_att, proto = self.CAN(struct_output, sub_structure, textual_output_all, emb_ids)
+        logits, loss_g, cross_att, proto = self.Local(struct_output, sub_structure, textual_output_all, emb_ids)
+        # logits, loss_g, cross_att, proto = self.CAN(struct_output, sub_structure, textual_output_all, emb_ids)
 
         if input[2][0] == "train" :
             loss_g = loss_g
