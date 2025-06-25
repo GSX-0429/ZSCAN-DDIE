@@ -1,4 +1,4 @@
-from .AttriTextBioBERTDatasets import AttriTextBioBERTDataset
+from .BioBERTDatasets import BioBERTDataset
 
 
-__all__=["AttriTextBioBERTDataset"]
+__all__=["BioBERTDataset"]
