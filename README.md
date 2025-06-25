@@ -16,5 +16,5 @@ After training, the parameters of models are saved in ./work_dirs/
 Then, you can test the model by:
 
 ```python
-python main.py --config configs.py --zsl_para work_dirs/zeroddi/model_parameter/zsl_model_best_epoch50_seed42.pkl --gzsl_para work_dirs/zeroddi/model_parameter/gzsl_model_best_epoch50_seed42.pkl
+python main.py --config configs.py --zsl_para work_dirs/zscan_ddie/model_parameter/zsl_best_epoch50.pkl --gzsl_para work_dirs/zscan_ddie/model_parameter/gzsl_best_epoch50.pkl
 ```

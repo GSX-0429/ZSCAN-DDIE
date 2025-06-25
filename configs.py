@@ -20,13 +20,13 @@ model = dict(
         output_dim=256
     ),
     textualmodule=dict(
-        type='BioTransEffectTextttention',
+        type='BioTextEncoder',
         output_dim=256
     ))
 
 data = dict(
     train=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="train",
         file_dir="./data/DrugBank/zsl",
@@ -37,7 +37,7 @@ data = dict(
         output_dim=256
     ),
     zsl_test=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="test",
         file_dir="./data/DrugBank/zsl",
@@ -48,7 +48,7 @@ data = dict(
         output_dim=256
     ),
     zsl_val=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="val",
         file_dir="./data/DrugBank/zsl",
@@ -59,7 +59,7 @@ data = dict(
         output_dim=256
     ),
     gzsl_test=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="test",
         file_dir="./data/DrugBank/gzsl",
@@ -70,7 +70,7 @@ data = dict(
         output_dim=256
     ),
     gzsl_val=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="val",
         file_dir="./data/DrugBank/gzsl",
@@ -80,7 +80,7 @@ data = dict(
         zsl_mode="gzsl",
         output_dim=256),
     val_seen=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="val",
         file_dir="./data/DrugBank",
@@ -91,7 +91,7 @@ data = dict(
         output_dim=256
     ),
     test_seen=dict(
-        type='AttriTextBioBERTDataset',
+        type='BioBERTDataset',
         Allfilename='./data/DrugBank/DDI_final.csv',
         mode="test",
         file_dir="./data/DrugBank",
@@ -121,8 +121,8 @@ max_grad_norm = 1.0,
 parameter_averaging = True,
 custom_hooks = [dict(type='NumClassCheckHook')]
 weight_decay = 0.0
-train_batch_size = 32
-num_epochs = 50
+train_batch_size = 64
+num_epochs = 10
 gradient_accumulation_steps = 1
 learning_rate = 0.0001
 dist_params = dict(backsend='nccl')
